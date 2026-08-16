@@ -1,4 +1,3 @@
-import { React } from "react";
 import {PageContentContainerStyle} from "../styles/PageContentContainerStyle";
 
 function PageContentContainer(props) {

@@ -1,18 +1,22 @@
-import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
-import { Login } from '../pages/Login';
-import { Dashboard } from '../pages/Dashboard';
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
+import { Layout } from "../components/Layout";
+import { Login } from "../pages/Login";
+import { Dashboard } from "../pages/Dashboard";
+import { Profile } from "../pages/Profile";
+import { Dependentes } from "../pages/Dependentes";
 
 export function AppRoutes() {
   return (
     <BrowserRouter>
       <Routes>
-        {/*manda direto pro login, tenho q aprender como funciona direito*/}
-        <Route path="/" element={<Navigate to="/login" />} />
-        
+        {/* Rotas Públicas */}
+        <Route path="/" element={<Login />} />
 
-
-        <Route path="/login" element={<Login />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route element={<Layout />}>
+          <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/perfil" element={<Profile />} />
+          <Route path="/dependentes" element={<Dependentes />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );

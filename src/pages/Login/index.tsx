@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -17,32 +18,24 @@ export function Login() {
   const navigate = useNavigate();
 
   const handleLogin = async (e) => {
-    if (e) e.preventDefault(); 
-
-    const emailFormatado = email.includes("@") ? email : `${email}@email.com`; 
+    e.preventDefault(); 
 
     try {
-      const response = await fetch("https://localhost:7019/api/Auth/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email: emailFormatado, senha }),
+      const response = await axios.post("https://localhost:7019/api/Auth/login", {
+        email, 
+        senha 
       });
 
-      const data = await response.json();
-
-      if (!response.ok) {
-        toast.error(data.erro || "E-mail ou senha inválidos!");
-        return;
-      }
-
       toast.success("Login realizado com sucesso!");
-      localStorage.setItem("token", data.token); 
+      localStorage.setItem("token", response.data.token); 
       navigate("/dashboard");
       
     } catch (error) {
-      toast.error("Erro de conexão com o servidor. A API está ligada?");
+      if (error.response) {
+        toast.error(error.response.data.erro || "E-mail ou senha inválidos!");
+      } else {
+        toast.error("Erro de conexão com o servidor. A API está ligada?");
+      }
     }
   };
 
@@ -65,7 +58,7 @@ export function Login() {
             
             <img src={logo} alt="Logo" style={{ maxWidth: "60%", height: "auto" }} className="img-fluid mb-3" />
             
-            <h2 className="mb-1" style={{ color: "var(--verde-terciario)", fontWeight: "400" }}>SRA</h2>
+            <h2 className="mb-1" style={{ color: "var(--verde-terciario)", fontWeight: "400" }}>SGA</h2>
             <p className="text-dark mb-4">Sistema de Gerenciamento de Assinaturas</p>
             
             <form className="d-flex flex-column gap-4" onSubmit={handleLogin}>
@@ -73,14 +66,13 @@ export function Login() {
               <div className="input-group">
                 <span className="input-group-text bg-light text-muted"><CiAt /></span>
                 <input 
-                  type="text" 
+                  type="email" 
                   className="form-control" 
-                  placeholder="Usuário" 
+                  placeholder="E-mail" 
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   required
                 />
-                <span className="input-group-text bg-light text-muted">@t2mlab.com</span>
               </div>
 
               <div className="input-group mb-2">
@@ -104,12 +96,14 @@ export function Login() {
                 </span>
               </div>
 
-              <div className="d-flex justify-content-center mt-3" onClick={handleLogin}>
+              <div className="d-flex justify-content-center mt-3">
+                <button type="submit" style={{ border: 'none', background: 'transparent', padding: 0 }}>
                   <BotaoLifeDesign
                     texto="Entrar"
                     cor="verdeEscuro"
                     tamanho="grande"
                   />
+                </button>
               </div>
 
             </form>
