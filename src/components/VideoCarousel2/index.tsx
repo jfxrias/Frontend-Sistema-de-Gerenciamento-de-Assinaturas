@@ -15,14 +15,37 @@ export function VideoCarousel2() {
     }
   };
 
-  const mockVideos = [
-    { id: 1, title: "AWS Cloud Practitioner", img: "https://picsum.photos/seed/cloud/300/170" },
-    { id: 2, title: "Google Cyber Security", img: "https://picsum.photos/seed/cyber/300/170" },
-    { id: 3, title: "Cisco CCST", img: "https://picsum.photos/seed/cisco/300/170" },
-    { id: 4, title: "Hackers do Bem", img: "https://picsum.photos/seed/hacker/300/170" },
-    { id: 5, title: "Dev Ops", img: "https://picsum.photos/seed/ops/300/170" },
-    { id: 6, title: "Natureza", img: "https://picsum.photos/seed/fut/300/170" },
-    { id: 7, title: "", img: "https://picsum.photos/seed/leipzig/300/170" },
+const mockVideos = [
+    { 
+      id: 1, 
+      title: "Hélio e Marcelo | Orange Cyberdefense", 
+      img: "https://img.youtube.com/vi/vZmrGxcoRJs/hqdefault.jpg" 
+    },
+    { 
+      id: 2, 
+      title: "Luís Henrique (Bulinha) | Residência TIC", 
+      img: "https://img.youtube.com/vi/svZ0UWb5NMs/hqdefault.jpg" 
+    },
+    { 
+      id: 3, 
+      title: "Introdução | TIC/Infra & Cyber", 
+      img: "https://img.youtube.com/vi/62So9BzuZ8g/hqdefault.jpg" 
+    },
+    { 
+      id: 4, 
+      title: "Juliana Sart | Cultura de Aprendizagem", 
+      img: "https://img.youtube.com/vi/2CZ5brTlJl4/hqdefault.jpg" 
+    },
+    { 
+      id: 5, 
+      title: "Palestra | Residência em TIC", 
+      img: "https://img.youtube.com/vi/JXuFyv0qChs/hqdefault.jpg" 
+    },
+    { 
+      id: 6, 
+      title: "Palestra | Residência em TIC", 
+      img: "https://img.youtube.com/vi/v9WheQGV_Ak/hqdefault.jpg" 
+    }
   ];
 
   return (
