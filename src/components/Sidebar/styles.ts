@@ -1,11 +1,9 @@
 import styled from "styled-components";
 
 export const SidebarStyle = styled.div`
-   
- 
   font-size: 100%;
   margin: 0 !important;
-  width: ${(props) => (props.collapse ? "7%" : "20%")};
+  width: ${(props) => (props.collapse ? "7%" : "22%")};
   margin-top: 1rem !important;
   height: calc(100vh - 2rem);
   padding-top: 1rem;
@@ -18,13 +16,28 @@ export const SidebarStyle = styled.div`
   transition: 0.3s;
 
   .column-container {
-    height: calc(100vh - 4rem);
+    height: calc(100vh - 2rem);
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    /* Libera o scroll vertical caso ultrapasse a tela */
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-bottom: 1rem;
+
+    /* Esconde barra de rolagem feia mantendo funcional */
+    scrollbar-width: thin;
+    scrollbar-color: var(--verde-primario) transparent;
+
+    .sidebar-divider {
+      width: 80%;
+      margin: 8px 0;
+      border-color: var(--preto-primario);
+      opacity: 0.2;
+    }
 
     .collapse-sidebar-action {
+      margin-bottom: 0.5rem;
       svg {
         font-size: 24px;
         &:hover {
@@ -32,10 +45,9 @@ export const SidebarStyle = styled.div`
           color: var(--verde-primario) !important;
         }
       }
-    }
-
-    .collapse-sidebar-action:hover {
-      cursor: pointer;
+      &:hover {
+        cursor: pointer;
+      }
     }
 
     .logo-area {
@@ -44,17 +56,18 @@ export const SidebarStyle = styled.div`
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      margin-bottom: 1rem;
+      margin-bottom: 0.5rem;
       background-color: var(--branco) !important;
 
       img {
-        max-width: ${(props) => (props.collapse ? "70%" : "6rem")};
+        max-width: ${(props) => (props.collapse ? "70%" : "5rem")};
       }
 
-      span{
+      span {
         color: var(--verde-secundario);
         font-weight: bold;
         text-align: center;
+        font-size: ${(props) => (props.collapse ? "11px" : "13px")};
       }
     }
 
@@ -62,39 +75,62 @@ export const SidebarStyle = styled.div`
       display: flex;
       flex-direction: column;
       font-size: 1rem;
-      align-items: ${(props) => (props.collapse ? "center" : "flex-start")};
-      width: ${(props) => (props.collapse ? "auto" : "100%")};
+      align-items: center;
+      width: 100%;
 
       .sidebar-nav-item {
-        width: ${(props) => (props.collapse ? "auto" : "100%")};
-        padding: 0.5rem;
+        width: 90%;
+        padding: 0.3rem 0.2rem;
+        margin: 2px 0;
+        border-radius: 6px;
         transition: 0.3s;
-        :hover {
-          color: ${(props) =>
-            props.collapse
-              ? "var(--preto-primario) !important"
-              : "var(--branco) !important"};
-          background-color: ${(props) =>
-            props.collapse ? "none" : "var(--verde-primario)"};
+        display: flex;
+        justify-content: center;
+
+        div {
+          width: 100%;
+          display: flex;
+          justify-content: center;
+        }
+
+        &:hover {
+          background-color: var(--verde-primario);
+          color: var(--branco) !important;
+          
+          .area-icons-label, svg, span {
+            color: var(--branco) !important;
+          }
         }
       }
 
       .area-icons-label {
         display: flex;
+        flex-direction: column; /* Deixa o ícone em cima e o texto embaixo */
         align-items: center;
-        gap: 0.5rem;
+        justify-content: center;
+        text-align: center;
+        gap: 2px;
+        width: 100%;
 
         &:hover {
           cursor: pointer;
         }
+
         svg {
-          font-size: 24px;
-          &:hover {
-            color: ${(props) =>
-              props.collapse
-                ? "var(--verde-primario) !important"
-                : "var(--branco) !important"};
-          }
+          font-size: 22px;
+        }
+
+        .accessibility-text {
+          font-weight: bold;
+          font-size: 18px;
+          line-height: 22px;
+        }
+
+        .label-sidebar {
+          font-size: 11px;
+          font-weight: 500;
+          text-align: center;
+          display: ${(props) => (props.collapse ? "block" : "block")};
         }
       }
     }    
@@ -108,31 +144,32 @@ export const SidebarStyle = styled.div`
         props.collapse ? "var(--branco)" : "var(--verde-primario)"};
       color: var(--branco);
       padding: 0.4rem;
-      width: 95%;
+      width: 90%;
       border-radius: 5px;
+      margin: 8px 0;
+      cursor: pointer;
 
       svg {
         font-size: 24px;
         color: ${(props) =>
           props.collapse ? "var(--preto-primario)" : "var(--branco)"};
-
-        :hover {
-          cursor: pointer;
-          color: ${(props) =>
-            props.collapse ? "var(--verde-primario) !important" : ""};
-        }
       }
 
       .user-info {
         display: flex;
         flex-direction: column;
-        font-size: 100%;
+        font-size: 90%;
+        text-align: center;
+
+        span {
+          color: ${(props) => (props.collapse ? "var(--preto-primario)" : "var(--branco)")};
+        }
       }
 
       .user-info #user-department {
-        font-size: 100%;
+        font-size: 80%;
         font-weight: 200;
       }
     }
-  } 
+  }
 `;

@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { Carousel, CarouselContainer, Card, ArrowButton } from "./styles";
 
-export function VideoCarousel() {
+export function VideoCarousel3() {
   //isso daqui tira o scroll do carrossel
   const carouselRef = useRef<HTMLDivElement>(null);
 
@@ -28,7 +28,7 @@ export function VideoCarousel() {
   return (
     <div style={{ padding: "0 16px" }}>
       <h4 style={{ fontWeight: "bold", marginBottom: "8px", color: "var(--cor-fonte, #333)" }}>
-        Serratec.DOC
+        Curso de POO
       </h4>
       
       <Carousel>

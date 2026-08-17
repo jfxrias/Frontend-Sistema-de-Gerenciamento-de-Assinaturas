@@ -27,7 +27,20 @@ export function Login() {
       });
 
       toast.success("Login realizado com sucesso!");
+      
+      // salva os dados no navegador
       localStorage.setItem("token", response.data.token); 
+      localStorage.setItem("userRole", response.data.role); 
+      
+      if (response.data.assinaturaId) {
+        localStorage.setItem("assinaturaId", response.data.assinaturaId);
+      }
+      const idPlano = response.data.assinaturaId || response.data.AssinaturaId;
+      
+      if (idPlano) {
+        localStorage.setItem("assinaturaId", idPlano);
+      }
+
       navigate("/dashboard");
       
     } catch (error) {
@@ -96,16 +109,16 @@ export function Login() {
                 </span>
               </div>
 
-              <div className="d-flex justify-content-center mt-3">
-                <button type="submit" style={{ border: 'none', background: 'transparent', padding: 0 }}>
-                  <BotaoLifeDesign
-                    texto="Entrar"
-                    cor="verdeEscuro"
-                    tamanho="grande"
-                  />
-                </button>
+              {/* troquei pq tava dando erro um button dentro de um button */}
+              <div className="d-flex justify-content-center mt-3" onClick={handleLogin} style={{ cursor: "pointer", display: "inline-block" }}>
+                <input type="submit" style={{ display: 'none' }} />
+                <BotaoLifeDesign
+                  texto="Entrar"
+                  cor="verdeEscuro"
+                  tamanho="grande"
+                />
               </div>
-
+              <p>Ou <span onClick={() => navigate("/planos")} style={{ cursor: "pointer", color: "blue" }} className="text-decoration-underline">cadastrar-se</span></p>
             </form>
           </div>
         </div>
@@ -113,3 +126,5 @@ export function Login() {
     </div>
   );
 }
+
+export default Login;

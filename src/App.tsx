@@ -1,6 +1,7 @@
 import { AppRoutes } from "./routes";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { VLibras } from "./components/VLibras";
 
 export default function App() {
   return (
@@ -17,7 +18,8 @@ export default function App() {
         pauseOnHover
         theme="colored"
       />
-      <AppRoutes />;
+      <AppRoutes />
+      <VLibras />
     </>
   );
 }
