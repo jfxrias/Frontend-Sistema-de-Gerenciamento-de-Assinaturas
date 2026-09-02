@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const SidebarStyle = styled.div`
+export const SidebarStyle = styled.div<{ collapse: boolean }>`
   font-size: 100%;
   margin: 0 !important;
   width: ${(props) => (props.collapse ? "7%" : "22%")};
@@ -59,8 +59,18 @@ export const SidebarStyle = styled.div`
       margin-bottom: 0.5rem;
       background-color: var(--branco) !important;
 
-      img {
-        max-width: ${(props) => (props.collapse ? "70%" : "5rem")};
+      .logo-mark {
+        width: ${(props) => (props.collapse ? "2.2rem" : "3rem")};
+        height: ${(props) => (props.collapse ? "2.2rem" : "3rem")};
+        border-radius: 0.8rem;
+        background: linear-gradient(135deg, var(--indigo-primario) 0%, var(--slate-secundario) 100%);
+        color: var(--branco);
+        font-size: ${(props) => (props.collapse ? "0.7rem" : "0.85rem")};
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 0.45rem;
       }
 
       span {

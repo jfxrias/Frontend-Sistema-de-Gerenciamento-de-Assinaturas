@@ -4,8 +4,6 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-import loginImage from "../../assets/t2m/t2m-login-image.svg";
-import logo from "../../assets/t2m/logo.png";
 import { BotaoLifeDesign } from "../../components/Button/BotaoLifeDesign";
 import { CiLock, CiAt } from "react-icons/ci";
 import { FaRegEyeSlash, FaRegEye } from "react-icons/fa";
@@ -57,22 +55,60 @@ export function Login() {
       <div className="row h-100">
         
         <div className="col-12 col-md-7 d-none d-md-flex align-items-center justify-content-center">
-          <img
-            src={loginImage}
-            style={{ maxWidth: "72%", height: "auto", margin: "0" }}
-            alt="Login"
-            className="img-fluid"
-          />
+          <div
+            className="d-flex align-items-center justify-content-center rounded-4 shadow-sm"
+            style={{
+              width: "72%",
+              minHeight: "28rem",
+              background: "linear-gradient(135deg, #E2E8F0 0%, #C7D2FE 100%)",
+              border: "1px solid rgba(148, 163, 184, 0.35)"
+            }}
+          >
+            <div style={{ textAlign: "center", color: "#1E293B" }}>
+              <div
+                style={{
+                  width: "5.5rem",
+                  height: "5.5rem",
+                  borderRadius: "1.25rem",
+                  background: "#1E293B",
+                  color: "#FFF",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                  margin: "0 auto 1rem",
+                  fontSize: "1.6rem",
+                  fontWeight: 700
+                }}
+              >
+                AM
+              </div>
+              <div style={{ fontSize: "1.1rem", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase" }}>
+                Painel Admin
+              </div>
+            </div>
+          </div>
         </div>
 
         <div className="col-12 col-md-5 d-flex align-items-center justify-content-center">
           
           <div className="w-100 px-4 px-md-5 text-center" style={{ maxWidth: "40rem" }}>
             
-            <img src={logo} alt="Logo" style={{ maxWidth: "60%", height: "auto" }} className="img-fluid mb-3" />
+            <div
+              className="d-inline-flex align-items-center justify-content-center rounded-3 mb-3 shadow-sm"
+              style={{
+                width: "8rem",
+                height: "3rem",
+                background: "linear-gradient(135deg, #1E293B 0%, #4F46E5 100%)",
+                color: "#FFF",
+                fontWeight: 700,
+                letterSpacing: "0.04em"
+              }}
+            >
+              AppManager
+            </div>
             
-            <h2 className="mb-1" style={{ color: "var(--verde-terciario)", fontWeight: "400" }}>SGA</h2>
-            <p className="text-dark mb-4">Sistema de Gerenciamento de Assinaturas</p>
+            <h2 className="mb-1" style={{ color: "var(--verde-terciario)", fontWeight: "600" }}>Painel Admin</h2>
+            <p className="text-dark mb-4">Sistema de Assinaturas</p>
             
             <form className="d-flex flex-column gap-4" onSubmit={handleLogin}>
               

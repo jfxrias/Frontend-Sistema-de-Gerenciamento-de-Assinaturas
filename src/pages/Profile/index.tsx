@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import PageContainer from "../../T2MContainers/PageContainer";
-import HeaderPageComponent from "../../T2MContainers/PageHeaderContainer";
-import ContentPageContainer from "../../T2MContainers/PageContentContainer";
+import PageContainer from "../../AppContainers/PageContainer";
+import HeaderPageComponent from "../../AppContainers/PageHeaderContainer";
+import ContentPageContainer from "../../AppContainers/PageContentContainer";
 import { MdPerson, MdEdit, MdSave, MdCancel, MdFamilyRestroom } from "react-icons/md";
 import { BotaoLifeDesign } from "../../components/Button/BotaoLifeDesign";
 import axios from "axios";

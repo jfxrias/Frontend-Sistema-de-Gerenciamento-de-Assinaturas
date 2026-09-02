@@ -1,30 +1,27 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import LogoT2m from "../../assets/img/t2m-logo-tema-claro.png";
-
-import { AiOutlineTable, AiOutlineIdcard } from "react-icons/ai";
-import { TbIcons } from "react-icons/tb";
-import { HiOutlineColorSwatch } from "react-icons/hi";
-import { FaWpforms } from "react-icons/fa";
 import { BsArrowBarRight, BsArrowBarLeft } from "react-icons/bs";
 import { CgHome } from "react-icons/cg";
 import { MdOutlineExitToApp } from "react-icons/md";
-import { BiUserCircle } from "react-icons/bi";
 import { IoContrastOutline } from "react-icons/io5";
 import { GoGear } from "react-icons/go";
-import { RxPeople } from "react-icons/rx";
 
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 import { SidebarStyle } from "./styles";
 
-function Sidebar({ logOut, windowSize }) {
+interface SidebarProps {
+  logOut: () => void;
+  windowSize: number;
+}
+
+function Sidebar({ logOut, windowSize }: SidebarProps) {
   const [sideBarCollapse, setSideBarCollapse] = useState(true);
   const navigate = useNavigate();
 
-  function navigateTo(route) {
+  function navigateTo(route: string) {
     setSideBarCollapse(true);
     window.scrollTo(0, 0);
     navigate(route);
@@ -51,8 +48,10 @@ function Sidebar({ logOut, windowSize }) {
           <Col className="column-container">
             
             <div className="logo-area">
-              <img src={LogoT2m} alt="Logo T2M" />
-              <span>{sideBarCollapse ? "SGA" : "Sistema de Gerenciamento de Assinaturas"}</span>             
+              <div className="logo-mark" aria-label="Logo do sistema">
+                <span>AM</span>
+              </div>
+              <span>{sideBarCollapse ? "AM" : "Painel Admin"}</span>
             </div>
 
             <div className="collapse-sidebar-action">

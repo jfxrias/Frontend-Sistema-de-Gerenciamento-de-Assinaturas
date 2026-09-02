@@ -1,11 +1,9 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Offcanvas from "react-bootstrap/Offcanvas";
-
-import LogoT2m from "../../assets/img/t2m-logo-tema-claro.png"; 
 
 import { CgHome } from "react-icons/cg";
 import { BsArrowBarLeft } from "react-icons/bs";
@@ -13,7 +11,6 @@ import { CgMenuRound } from "react-icons/cg";
 import { BiUserCircle } from "react-icons/bi";
 import { MdOutlineExitToApp } from "react-icons/md";
 import { IoContrastOutline } from "react-icons/io5";
-import { RxPeople } from "react-icons/rx";
 import { GoGear } from "react-icons/go";
 
 import {
@@ -23,7 +20,11 @@ import {
   CloseIconArea,
 } from "./styles";
 
-function SidebarMobile({ logOut }) {
+interface SidebarMobileProps {
+  logOut: () => void;
+}
+
+function SidebarMobile({ logOut }: SidebarMobileProps) {
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
@@ -31,7 +32,7 @@ function SidebarMobile({ logOut }) {
 
   const navigate = useNavigate();
 
-  function navigateTo(route) {
+  function navigateTo(route: string) {
     setShow(false);
     window.scrollTo(0, 0);
     navigate(route);
@@ -61,8 +62,10 @@ function SidebarMobile({ logOut }) {
               <CgMenuRound onClick={handleShow} size={28} />
             </div>
             <div className="central-area">
-              <img src={LogoT2m} alt="Logo T2M" style={{ maxWidth: "40px", marginRight: "8px" }} />
-              <span style={{ fontWeight: "bold", color: "var(--verde-secundario)" }}>SGA</span>   
+              <div className="logo-mark" aria-label="Logo do sistema">
+                <span>AM</span>
+              </div>
+              <span style={{ fontWeight: "bold", color: "var(--verde-secundario)" }}>AppManager</span>
             </div>
             <div className="right-area" onClick={() => navigateTo("/perfil")}>
               <BiUserCircle size={28} />
@@ -74,8 +77,10 @@ function SidebarMobile({ logOut }) {
             <Offcanvas.Header>
               <Offcanvas.Title>
                 <LogoArea>
-                  <img src={LogoT2m} alt="Logo T2M" />
-                  <span style={{ fontSize: "14px", marginTop: "4px" }}>Sistema de Gerenciamento de Assinaturas</span> 
+                  <div className="logo-mark" aria-label="Logo do sistema">
+                    <span>AM</span>
+                  </div>
+                  <span style={{ fontSize: "14px", marginTop: "4px" }}>Painel Admin</span>
                 </LogoArea>
               </Offcanvas.Title>
               <CloseIconArea>

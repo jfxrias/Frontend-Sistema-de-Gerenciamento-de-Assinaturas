@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, FormEvent } from "react";
 import Modal from "react-bootstrap/Modal";
 import { toast } from "react-toastify";
 import axios from "axios"; 
@@ -8,7 +8,21 @@ import { CiLock, CiAt, CiUser } from "react-icons/ci";
 import { FaRegEyeSlash, FaRegEye } from "react-icons/fa";
 import { BotaoLifeDesign } from "../../components/Button/BotaoLifeDesign";
 
-function CustomModal({ show, handleClose, dependenteEditando, recarregarLista }) {
+interface Dependente {
+  id?: number;
+  nome: string;
+  email: string;
+  senha?: string;
+}
+
+interface CustomModalProps {
+  show: boolean;
+  handleClose: () => void;
+  dependenteEditando?: Dependente | null;
+  recarregarLista: () => void;
+}
+
+function CustomModal({ show, handleClose, dependenteEditando, recarregarLista }: CustomModalProps) {
   const [nome, setNome] = useState("");
   const [email, setEmail] = useState("");
   const [senha, setSenha] = useState("");
@@ -32,7 +46,7 @@ function CustomModal({ show, handleClose, dependenteEditando, recarregarLista })
     }
   }, [dependenteEditando, show]);
 
-  const handleSalvar = async (e) => {
+  const handleSalvar = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault(); 
 
     if (senha !== confirmarSenha) {
@@ -58,8 +72,8 @@ function CustomModal({ show, handleClose, dependenteEditando, recarregarLista })
       recarregarLista();
       handleClose();
 
-    } catch (error) {
-      toast.error(error.response?.data?.erro || "Erro ao salvar dependente.");
+    } catch (error: any) {
+      toast.error(error?.response?.data?.erro || "Erro ao salvar dependente.");
     }
   };
 

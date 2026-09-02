@@ -3,7 +3,7 @@ import Button from 'react-bootstrap/Button';
 interface BotaoProps {
   texto: string;
   cor: string;
-  tamanho: string;
+  tamanho?: string;
   onClick?: () => void;
 }
 
@@ -23,7 +23,7 @@ export function BotaoLifeDesign({ texto, cor, tamanho, onClick }: BotaoProps) {
 
   let corFundo = '';
   if (cor === 'verde') corFundo = 'var(--verde-secundario)';
-   if (cor === 'verdeEscuro') corFundo = 'var(--verde-terciario)';
+  if (cor === 'verdeEscuro') corFundo = 'var(--verde-terciario)';
   if (cor === 'cinza') corFundo = 'var(--cinza-primario)';
   if (cor === 'vermelho') corFundo = 'var(--vermelho-perigo)';
 

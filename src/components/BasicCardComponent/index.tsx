@@ -3,7 +3,14 @@ import Card from "react-bootstrap/Card";
 import { RiDeleteBin6Line } from "react-icons/ri";
 import { BasicCardStyle } from "./style";
 
-function BasicCardComponent({ title, text, buttonAlternativeText, action }) {
+interface BasicCardProps {
+  title: string;
+  text: string;
+  buttonAlternativeText: string;
+  action: () => void;
+}
+
+function BasicCardComponent({ title, text, buttonAlternativeText, action }: BasicCardProps) {
   return (
     <BasicCardStyle>
       <Card>

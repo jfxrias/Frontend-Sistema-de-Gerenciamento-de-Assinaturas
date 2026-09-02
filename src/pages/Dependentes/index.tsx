@@ -6,9 +6,9 @@ import { RxPeople } from "react-icons/rx";
 import { toast } from "react-toastify";
 import { Modal as ModalBootstrap } from "react-bootstrap"; 
 
-import PageContainer from "../../T2MContainers/PageContainer";
-import HeaderPageComponent from "../../T2MContainers/PageHeaderContainer";
-import ContentPageContainer from "../../T2MContainers/PageContentContainer";
+import PageContainer from "../../AppContainers/PageContainer";
+import HeaderPageComponent from "../../AppContainers/PageHeaderContainer";
+import ContentPageContainer from "../../AppContainers/PageContentContainer";
 import Modal from "../../components/Modal"; 
 import { BotaoLifeDesign } from "../../components/Button/BotaoLifeDesign";
 import TableComponent from "../../components/TableComponent";

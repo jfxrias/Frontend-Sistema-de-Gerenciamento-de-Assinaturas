@@ -71,9 +71,18 @@ export const LogoArea = styled.div`
   padding: 0.2rem;
   background-color: var(--branco) !important;
 
-  img {
-    width: 100%;
-    max-width: 7rem;
+  .logo-mark {
+    width: 2.7rem;
+    height: 2.7rem;
+    border-radius: 0.75rem;
+    background: linear-gradient(135deg, var(--indigo-primario) 0%, var(--slate-secundario) 100%);
+    color: var(--branco);
+    font-size: 0.8rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.35rem;
   }
 
   span {
@@ -102,23 +111,28 @@ export const SidebarMobileStyle = styled.div`
 
     .central-area {
       display: flex;
-
       justify-content: center;
       align-items: center;
+      gap: 0.7rem;
 
-      img {
-        width: 5rem;
+      .logo-mark {
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 0.75rem;
+        background: linear-gradient(135deg, var(--indigo-primario) 0%, var(--slate-secundario) 100%);
+        color: var(--branco);
+        font-size: 0.75rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
       }
 
       span {
         color: var(--verde-secundario);
         font-weight: bold;
         text-align: center;
-        font-size: 1.8rem;
-      }
-
-      span::before {
-        content: " - ";
+        font-size: 1.1rem;
       }
     }
 

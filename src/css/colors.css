@@ -1,21 +1,28 @@
 :root{
 
-    /* Paleta Cores T2M */
+    /* Paleta neutra para white-label */
     --branco: #FFF;
-    --branco-primario: #F3F5F6;
-    --branco-secundario: #D9D9D9;
-    --verde-primario:#01A998;
-    --verde-secundario: #03A688;
-    --verde-terciario: #013D32;
-    --cinza-primario: #585859;
-    --cinza-secundario: #3D3D3D;
-    --preto-primario: #0D0D0D;
+    --branco-primario: #F8FAFC;
+    --branco-secundario: #E2E8F0;
+    --indigo-primario: #4F46E5;
+    --indigo-secundario: #4338CA;
+    --indigo-terciario: #1E293B;
+    --slate-primario: #475569;
+    --slate-secundario: #334155;
+    --preto-primario: #0F172A;
+
+    /* Alias para manter compatibilidade visual com o restante do app */
+    --verde-primario: var(--indigo-primario);
+    --verde-secundario: var(--indigo-secundario);
+    --verde-terciario: var(--indigo-terciario);
+    --cinza-primario: var(--slate-primario);
+    --cinza-secundario: var(--slate-secundario);
 
     /* Cores Alertas */
-    --vermelho-perigo: #fa5a54;
-    --amarelo-atencao: #ffca2c;
-    --azul-informativo: #5bc0de;
-    --verde-sucesso: var(--verde-secundario);
+    --vermelho-perigo: #DC2626;
+    --amarelo-atencao: #F59E0B;
+    --azul-informativo: #2563EB;
+    --verde-sucesso: #16A34A;
 
     --cor-fonte: var(--cinza-secundario);
     --cor-fundo: var(--branco-primario);

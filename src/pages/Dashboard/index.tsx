@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { DiReact } from "react-icons/di";
 import { GoDeviceCameraVideo } from "react-icons/go";
-import PageContainer from "../../T2MContainers/PageContainer";
-import HeaderPageComponent from "../../T2MContainers/PageHeaderContainer";
-import ContentPageContainer from "../../T2MContainers/PageContentContainer";
+import PageContainer from "../../AppContainers/PageContainer";
+import HeaderPageComponent from "../../AppContainers/PageHeaderContainer";
+import ContentPageContainer from "../../AppContainers/PageContentContainer";
 import { VideoCarousel } from "../../components/VideoCarousel";
 import { VideoCarousel2 } from "../../components/VideoCarousel2";
 import { VideoCarousel3 } from "../../components/VideoCarousel3";
