@@ -1,4 +1,3 @@
-import React from "react";
 import { useNavigate } from "react-router-dom";
 import PageContainer from "../../AppContainers/PageContainer";
 import HeaderPageComponent from "../../AppContainers/PageHeaderContainer";
@@ -6,11 +5,16 @@ import ContentPageContainer from "../../AppContainers/PageContentContainer";
 import { MdAttachMoney, MdCheck } from "react-icons/md";
 import { BotaoLifeDesign } from "../../components/Button/BotaoLifeDesign";
 
+interface PlanoEscolhido {
+  id: string;
+  titulo: string;
+  texto: string;
+}
+
 export function Planos() {
   const navigate = useNavigate();
 
-  //envia o usuário para o cadastro levando os dados do plano
-  const handleAssinar = (planoEscolhido) => {
+  const handleAssinar = (planoEscolhido: PlanoEscolhido) => {
     navigate("/cadastro", { state: { plano: planoEscolhido } });
   };
 

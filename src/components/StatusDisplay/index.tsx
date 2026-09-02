@@ -1,8 +1,13 @@
-function StatusDisplay({ status }) {
-  function handleColorStatus(value) {
+interface StatusDisplayProps {
+  status: string;
+}
+
+function StatusDisplay({ status }: StatusDisplayProps) {
+  function handleColorStatus(value: string): string {
     if (value === "Atenção") return "var(--amarelo-atencao)";
     if (value === "Sucesso") return "var(--verde-sucesso)";
     if (value === "Perigo") return "var(--vermelho-perigo)";
+    return "var(--azul-informativo)";
   }
 
   return (
@@ -14,8 +19,7 @@ function StatusDisplay({ status }) {
         borderRadius: "50%",
         backgroundColor: handleColorStatus(status),
       }}
-    >
-    </div>
+    ></div>
   );
 }
 

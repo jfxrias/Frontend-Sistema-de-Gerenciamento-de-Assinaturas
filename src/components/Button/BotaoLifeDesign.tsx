@@ -1,3 +1,4 @@
+import type { ReactNode } from 'react';
 import Button from 'react-bootstrap/Button';
 
 interface BotaoProps {
@@ -5,9 +6,10 @@ interface BotaoProps {
   cor: string;
   tamanho?: string;
   onClick?: () => void;
+  icone?: ReactNode;
 }
 
-export function BotaoLifeDesign({ texto, cor, tamanho, onClick }: BotaoProps) {
+export function BotaoLifeDesign({ texto, cor, tamanho, onClick, icone }: BotaoProps) {
   
   let largura = '10rem'; //por padrão vem no pequeno
   if (tamanho === 'grande') largura = '18rem';
@@ -24,6 +26,7 @@ export function BotaoLifeDesign({ texto, cor, tamanho, onClick }: BotaoProps) {
   let corFundo = '';
   if (cor === 'verde') corFundo = 'var(--verde-secundario)';
   if (cor === 'verdeEscuro') corFundo = 'var(--verde-terciario)';
+  if (cor === 'verdeClaro') corFundo = '#0f766e';
   if (cor === 'cinza') corFundo = 'var(--cinza-primario)';
   if (cor === 'vermelho') corFundo = 'var(--vermelho-perigo)';
 
@@ -34,9 +37,14 @@ export function BotaoLifeDesign({ texto, cor, tamanho, onClick }: BotaoProps) {
         width: largura, 
         backgroundColor: corFundo, 
         borderColor: corFundo, 
-        color: 'var(--branco)'
+        color: 'var(--branco)',
+        display: 'inline-flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        gap: '0.5rem'
       }}
     >
+      {icone}
       {texto}
     </Button>
   );

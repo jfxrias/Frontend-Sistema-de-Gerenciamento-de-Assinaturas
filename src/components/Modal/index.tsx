@@ -1,4 +1,5 @@
-import { useState, useEffect, FormEvent } from "react";
+import { useState, useEffect } from "react";
+import type { FormEvent } from "react";
 import Modal from "react-bootstrap/Modal";
 import { toast } from "react-toastify";
 import axios from "axios"; 

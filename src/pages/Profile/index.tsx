@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, type FormEvent, type MouseEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import PageContainer from "../../AppContainers/PageContainer";
 import HeaderPageComponent from "../../AppContainers/PageHeaderContainer";
@@ -31,7 +31,7 @@ export function Profile() {
         setNome(response.data.nome);
         setEmail(response.data.email);
         setLoading(false);
-      } catch (error) {
+      } catch (error: any) {
         console.error(error);
         toast.error("Erro ao carregar dados do perfil.");
         setLoading(false);
@@ -46,7 +46,7 @@ export function Profile() {
   }, [token, navigate]);
 
   // função para salvar a edição do perfil
-  const handleSalvar = async (e) => {
+  const handleSalvar = async (e: FormEvent<HTMLFormElement> | MouseEvent) => {
     e.preventDefault();
     try {
       await axios.put("https://localhost:7019/api/Auth/perfil", 
@@ -56,7 +56,7 @@ export function Profile() {
       
       toast.success("Perfil atualizado com sucesso!");
       setIsEditing(false);
-    } catch (error) {
+    } catch (error: any) {
       console.error(error);
       toast.error("Erro ao atualizar o perfil.");
     }

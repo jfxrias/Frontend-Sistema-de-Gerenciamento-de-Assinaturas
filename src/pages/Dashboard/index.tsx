@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { DiReact } from "react-icons/di";
+import { useEffect, useState } from "react";
 import { GoDeviceCameraVideo } from "react-icons/go";
 import PageContainer from "../../AppContainers/PageContainer";
 import HeaderPageComponent from "../../AppContainers/PageHeaderContainer";
@@ -8,13 +7,12 @@ import { VideoCarousel } from "../../components/VideoCarousel";
 import { VideoCarousel2 } from "../../components/VideoCarousel2";
 import { VideoCarousel3 } from "../../components/VideoCarousel3";
 
-
 export function Dashboard() {
-  const [assinaturaId, setAssinaturaId] = useState("");
+  const [assinaturaId, setAssinaturaId] = useState<string>("");
 
   useEffect(() => {
     const id = localStorage.getItem("assinaturaId");
-    setAssinaturaId(id);
+    setAssinaturaId(id ?? "");
   }, []);
 
   return (

@@ -1,11 +1,16 @@
-import {PageContentContainerStyle} from "../styles/PageContentContainerStyle";
+import type { ReactNode } from "react";
+import { PageContentContainerStyle } from "../styles/PageContentContainerStyle";
 
-function PageContentContainer(props) {
-    return(
-        <PageContentContainerStyle>
-            {props.children}
-        </PageContentContainerStyle>
-    );
+interface PageContentContainerProps {
+  children?: ReactNode;
+}
+
+function PageContentContainer({ children }: PageContentContainerProps) {
+  return (
+    <PageContentContainerStyle>
+      {children}
+    </PageContentContainerStyle>
+  );
 }
 
 export default PageContentContainer;

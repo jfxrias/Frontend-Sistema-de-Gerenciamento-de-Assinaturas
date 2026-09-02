@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState, type FormEvent } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import PageContainer from "../../AppContainers/PageContainer";
 import HeaderPageComponent from "../../AppContainers/PageHeaderContainer";
@@ -9,11 +9,17 @@ import BasicCardComponent from "../../components/BasicCardComponent";
 import axios from "axios";
 import { toast } from "react-toastify";
 
+interface PlanoEscolhido {
+  id: string | null;
+  titulo: string;
+  texto: string;
+}
+
 export function Cadastro() {
   const location = useLocation();
   const navigate = useNavigate();
-  
-  const planoEscolhido = location.state?.plano || {
+
+  const planoEscolhido: PlanoEscolhido = (location.state as { plano?: PlanoEscolhido } | null)?.plano ?? {
     titulo: "Nenhum plano selecionado",
     texto: "Por favor, volte e escolha um plano.",
     id: null
@@ -28,9 +34,8 @@ export function Cadastro() {
     navigate("/planos");
   };
 
-  // função disparada ao enviar o formulário
-  const handleSubmit = async (e) => {
-    e.preventDefault(); //p não recarregar a página
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
 
     if (!planoEscolhido.id) {
       toast.error("Por favor, selecione um plano antes de se cadastrar!");
@@ -58,9 +63,10 @@ export function Cadastro() {
       toast.success("Cadastro realizado com sucesso!");
       navigate("/login");
 
-    } catch (error) {
+    } catch (error: unknown) {
+      const axiosError = error as { response?: { data?: { message?: string } } };
       console.error(error);
-      toast.error(error.response?.data?.message || "Erro ao realizar o cadastro. Tente novamente.");
+      toast.error(axiosError.response?.data?.message || "Erro ao realizar o cadastro. Tente novamente.");
     }
   };
 
@@ -119,10 +125,18 @@ export function Cadastro() {
                 />
               </div>
 
-              <div className="mt-3" onClick={handleSubmit} style={{ cursor: "pointer", display: "inline-block" }}>
-                <input type="submit" style={{ display: 'none' }} />
+              <button
+                type="submit"
+                style={{
+                  border: "none",
+                  background: "transparent",
+                  padding: 0,
+                  cursor: "pointer",
+                  display: "inline-block"
+                }}
+              >
                 <BotaoLifeDesign texto="Finalizar Cadastro" cor="verdeEscuro" />
-              </div>
+              </button>
 
             </form>
           </div>

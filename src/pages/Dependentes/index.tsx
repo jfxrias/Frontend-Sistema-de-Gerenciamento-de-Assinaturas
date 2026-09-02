@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
-import { DiReact } from "react-icons/di";
 import { RxPeople } from "react-icons/rx";
 
 import { toast } from "react-toastify";
@@ -13,15 +12,21 @@ import Modal from "../../components/Modal";
 import { BotaoLifeDesign } from "../../components/Button/BotaoLifeDesign";
 import TableComponent from "../../components/TableComponent";
 
+interface Dependente {
+  id: number;
+  nome: string;
+  email: string;
+  senha?: string;
+}
+
 export function Dependentes() {
-  //states
-  const [dependentes, setDependentes] = useState([]);
+  const [dependentes, setDependentes] = useState<Dependente[]>([]);
   
   const [showModal, setShowModal] = useState(false);
-  const [dependenteEditando, setDependenteEditando] = useState(null);
+  const [dependenteEditando, setDependenteEditando] = useState<Dependente | null>(null);
 
   const [showDeleteModal, setShowDeleteModal] = useState(false);
-  const [dependenteParaDeletar, setDependenteParaDeletar] = useState(null);
+  const [dependenteParaDeletar, setDependenteParaDeletar] = useState<Dependente | null>(null);
 
   //limites, tenho q puxar isso da api, e editar o bd para linkar usuario com a assinatura, e a assinatura com o limite de dependentes, tb tenho q criar a página de
   //assinar
@@ -51,20 +56,21 @@ export function Dependentes() {
     setShowModal(true);
   };
 
-  const handleEdit = (dependente) => {
+  const handleEdit = (dependente: Dependente) => {
     setDependenteEditando(dependente);
     setShowModal(true);
   };
 
   const handleClose = () => setShowModal(false);
 
-  // handles de deletar
-  const handleDeleteClick = (dependente) => {
+  const handleDeleteClick = (dependente: Dependente) => {
     setDependenteParaDeletar(dependente);
     setShowDeleteModal(true); 
   };
 
   const confirmarDelecao = async () => {
+    if (!dependenteParaDeletar) return;
+
     try {
       const token = localStorage.getItem("token");
       await axios.delete(`https://localhost:7019/api/Dependente/${dependenteParaDeletar.id}`, {

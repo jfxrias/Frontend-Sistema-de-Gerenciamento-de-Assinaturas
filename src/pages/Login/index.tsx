@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, type FormEvent, type MouseEvent } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
@@ -15,7 +15,7 @@ export function Login() {
   
   const navigate = useNavigate();
 
-  const handleLogin = async (e) => {
+  const handleLogin = async (e: FormEvent<HTMLFormElement> | MouseEvent) => {
     e.preventDefault(); 
 
     try {
@@ -41,7 +41,7 @@ export function Login() {
 
       navigate("/dashboard");
       
-    } catch (error) {
+    } catch (error: any) {
       if (error.response) {
         toast.error(error.response.data.erro || "E-mail ou senha inválidos!");
       } else {

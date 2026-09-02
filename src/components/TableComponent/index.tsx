@@ -1,9 +1,20 @@
-import React from "react";
 import Table from "react-bootstrap/Table";
 import { MdOutlineEdit, MdRemoveCircleOutline } from "react-icons/md";
 import { TableStyle } from "./style";
 
-function TableComponent({ dados, onEdit, onDeleteClick }) {
+interface Dependente {
+  id: number;
+  nome: string;
+  email: string;
+}
+
+interface TableComponentProps {
+  dados?: Dependente[];
+  onEdit: (dependente: Dependente) => void;
+  onDeleteClick: (dependente: Dependente) => void;
+}
+
+function TableComponent({ dados = [], onEdit, onDeleteClick }: TableComponentProps) {
   return (
     <TableStyle>
       <div className="table-area">
@@ -17,7 +28,7 @@ function TableComponent({ dados, onEdit, onDeleteClick }) {
             </tr>
           </thead>
           <tbody>
-            {dados && dados.length > 0 ? (
+            {dados.length > 0 ? (
               dados.map((dependente, index) => (
                 <tr key={dependente.id}>
                   <td>{index + 1}</td>
@@ -28,7 +39,6 @@ function TableComponent({ dados, onEdit, onDeleteClick }) {
                       style={{ cursor: "pointer", fontSize: "1.6rem", marginRight: "10px" }} 
                       onClick={() => onEdit(dependente)} 
                     />
-                    {/* btn de deletar acionando a função do pai */}
                     <MdRemoveCircleOutline 
                       style={{ cursor: "pointer", fontSize: "1.6rem", color: "red" }} 
                       onClick={() => onDeleteClick(dependente)}
@@ -38,7 +48,7 @@ function TableComponent({ dados, onEdit, onDeleteClick }) {
               ))
             ) : (
               <tr>
-                <td colSpan="4" className="text-center py-4">Nenhum dependente encontrado.</td>
+                <td colSpan={4} className="text-center py-4">Nenhum dependente encontrado.</td>
               </tr>
             )}
           </tbody>
