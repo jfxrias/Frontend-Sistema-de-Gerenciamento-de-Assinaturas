@@ -1,6 +1,8 @@
 # Desafio Técnico Frontend - Sistema de Gerenciamento de Assinaturas
 
-Interface de usuário para consumir a API de gerenciamento de assinaturas, construída com React e Vite, seguindo o padrão visual do Life Design da T2M.
+Este é um projeto desenvolvido como resolução de um desafio técnico público para fins de estudo e demonstração de habilidades arquiteturais.
+Interface de usuário para consumir a API de gerenciamento de assinaturas, construída com React e Vite.
+
 
 ## 🚀 Tecnologias Utilizadas
 - React + Vite
